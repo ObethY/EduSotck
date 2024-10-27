@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Salon </title> <!--nombre del salon-->
+        <link rel="stylesheet" href="../style_general/reset.css">
+        <link rel="stylesheet" href="../style_general/style-pagina.css"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <header>
+            <div class="navegacion">
+                <h1> <img src=""></h1> <!--logo-->
+                <nav>
+                    <ul>
+                        <li><a href="../institutos/institutos.html">Institutos</a></li>
+                        <li><a href="">Usuarios</a></li>
+                        <li><a href="">Movimientos</a></li>
+                        <li><a href="">Contacto</a></li>
+                        <li><a href="">Salir</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="titulos">
+                <button class="botonIcono atras" id="atras">
+                    <img src="../imagenes/flecha-hacia-atras.png" alt="Atras">
+               </button>
+                <h1> EDIFICIO </h1> <!--poner el nombre del edificio-->
+            </div>
+            
+
+            <div> <!--titulo, subtitulo y formulario-->
+
+                <div class="tablaEncabezado">
+                    <div >
+                        <h1 class="subtitulos"> SALÓN </h1>
+                        <button class="botonIcono" id="agregar">
+                            <img src="../imagenes/agregar.png" alt="Agregar salón">
+                       </button>
+                    </div>
+                    
+                    <div class="buscar">
+                        <select id="buscarPor" class="buscarPor"> <!--lista para seleccionar-->
+                            <!--opciones-->
+                            <option>------</option>
+                            <option>Salón</option>
+                            <option>Capacidad</option> 
+                            <option>Planta</option>
+                        </select>
+                        <input class="inputBuscar" placeholder="Buscar"/>
+                        <button class="botonIcono">
+                            <img src="../imagenes/buscar.png" alt="">
+                        </button>
+                    </div>
+                </div>
+
+
+                
+                
+
+                <div class="form-container" id="form_container"> 
+                    <div class="formularioVentana"> 
+                        <div class="tituloFormulario">
+                            <h1> Agregar salón </h1>
+                        </div>
+
+                        <form class="formulario">
+                            <div  class="caja numero">
+                                <label for="numero">Numero de salón</label>
+                                <input type="text" id="numeroSalon" class="input" required>
+                            </div>
+    
+                            <div class="caja capacidad">
+                                <label for="capacidad">Capacidad</label>
+                                <input type="number" id="capacidadSalon" class="input" required >
+                            </div>  
+                            
+                            <div  class="caja planta">
+                                <legend>Planta</legend>
+                                <select id="selectPiso" required> <!--lista para seleccionar-->
+                                    <!--opciones-->
+                                    <option>------</option>
+                                    <option>Sótano</option>
+                                    <option>Planta baja</option>
+                                    <option>Primer piso</option> 
+                                    <option>Otro</option>
+                                </select>
+                            </div> 
+    
+                            <div class="caja otraPlanta">
+                                <input type="number" id="numeroPiso" class="input" placeholder="Ingrese el número de piso"> <!--si se da en otra planta, aqui se guarda el numero de piso-->
+                                <p id="mensajeError">El número del piso debe de ser mayor o igual a 2.</p> <!--por si da error jijij-->
+                            </div>
+    
+                            <div class="caja botonAccion">
+                                <div class="accion">
+                                    <input type="button" value="Cancelar" class="boton cancelar" id="cancelar">
+                                </div>
+                                <div class="accion">
+                                    <input type="submit" value="Agregar" class="boton agregar" id="agregarBD">
+                                </div>  
+                            </div> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contenedor" class="contenedorListas"></div> <!--aqui se agregan-->
+
+            <div class="form-container" id="eliminarVentana"> 
+                <div class="eliminarVentana"> 
+                    <p> ¿Deseas eliminar este instituto? </p>
+                    <div class="formEliminar">
+                        <input type="button" value="No" class="boton eliminar" id="eliminarNo">
+                        <input type="button" value="Si" class="boton eliminar" id="eliminarSi">
+                    </div>   
+                </div>
+            </div>
+
+            <div class="form-editar" id="form_editar"> 
+                <div class="formularioVentana"> 
+                    <div class="tituloFormulario">
+                        <h1> Editar salón </h1>
+                    </div>
+
+                    <form class="formulario">
+                        <div  class="caja numero">
+                            <label for="numero">Numero de salón</label>
+                            <input type="text" id="numeroSalon" class="input" required>
+                        </div>
+
+                        <div class="caja capacidad">
+                            <label for="capacidad">Capacidad</label>
+                            <input type="number" id="capacidadSalon" class="input" required >
+                        </div>  
+                        
+                        <div  class="caja planta">
+                            <legend>Planta</legend>
+                            <select id="selectPiso" required> <!--lista para seleccionar-->
+                                <!--opciones-->
+                                <option>------</option>
+                                <option>Sótano</option>
+                                <option>Planta baja</option>
+                                <option>Primer piso</option> 
+                                <option>Otro</option>
+                            </select>
+                        </div> 
+
+                        <div class="caja otraPlanta">
+                            <input type="number" id="numeroPiso" class="input" placeholder="Ingrese el número de piso"> <!--si se da en otra planta, aqui se guarda el numero de piso-->
+                            <p id="mensajeError">El número del piso debe de ser mayor o igual a 2.</p> <!--por si da error jijij-->
+                        </div>
+
+                        <div class="caja botonAccion">
+                            <div class="accion">
+                                <input type="button" value="Cancelar" class="boton cancelar" id="cancelarEditar">
+                            </div>
+                            <div class="accion">
+                                <input type="submit" value="Aceptar" class="boton agregar" id="editarBD">
+                            </div>  
+                        </div> 
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+        </main>
+        
+        <footer> <!--Etiqueta de pie de página-->
+            <p class="Copyright"> &copy Copyright  2024 </p>
+            <p class="Copyright"> DERECHOS RESERVADOS </p>
+            <p class="Copyright"> LOS PANZONES :D</p>
+
+        </footer>
+
+        <script src="salon_app.js"></script>
+    </body>
+</html>

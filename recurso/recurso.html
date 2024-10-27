@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Recurso </title> <!--nombre del salon-->
+        <link rel="stylesheet" href="../style_general/reset.css"> 
+        <link rel="stylesheet" href="../style_general/style-pagina.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <div class="navegacion">
+                <h1> <img src=""></h1> <!--logo-->
+                <nav> 
+                    <ul>
+                        <li><a href="../institutos/institutos.html">Institutos</a></li>
+                        <li><a href="">Usuarios</a></li>
+                        <li><a href="">Movimientos</a></li>
+                        <li><a href="">Contacto</a></li>
+                        <li><a href="">Salir</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="titulos">
+                <button class="botonIcono atras" id="atras">
+                    <img src="../imagenes/flecha-hacia-atras.png" alt="Atras">
+               </button>
+                <h1> SALÓN </h1> <!--poner el nombre del salon-->
+            </div>
+
+            <div> <!--titulo, subtitulo y formulario-->
+                <h1 class="subtitulos"> MOBILIARIO </h1>
+
+                <button class="botonIcono" id="agregar">
+                     <img src="../imagenes/agregar.png" alt="Agregar recurso">
+                </button>
+
+                <div class="form-container" id="form_container"> 
+                    <div class="formularioVentana"> 
+                        <div class="tituloFormulario">
+                            <h1> Agregar recurso </h1>
+                        </div>
+
+                        <form class="formulario">
+                            <div  class="caja nombre">
+                                <label for="nombre">Nombre del recurso</label>
+                                <input type="text" id="nombreRecurso" class="input" required>
+                            </div>
+    
+                            <div  class="caja color">
+                                <label for="color">Color</label>
+                                <input type="text" id="colorRecurso" class="input" required>
+                            </div>  
+                            
+                            <div  class="caja marca">
+                                <label for="marca">Marca</label>
+                                <input type="text" id="marcaRecurso" class="input" required>
+                            </div> 
+    
+                            <div  class="caja estado">
+                                <legend>Estado</legend>
+                                <select id="estadoRecurso" required> <!--lista para seleccionar-->
+                                    <!--opciones-->
+                                    <option>------</option>
+                                    <option>Nuevo</option>
+                                    <option>Bueno</option> 
+                                    <option>Regular</option>
+                                    <option>Malo</option>
+                                    <option>Cambio urgente</option>
+                                </select> 
+                            </div> 
+    
+                            <div  class="caja precio">
+                                <label for="precio">Precio</label>
+                                <input type="number" id="precioRecurso" class="input" required >
+                            </div> 
+    
+                            <div  class="caja serial">
+                                <label for="serial">Numero de serie</label>
+                                <input type="number" id="serialRecurso" class="input" required>
+                            </div> 
+    
+                            <div  class="caja posicion">
+                                <label for="posicion">Posición</label>
+                                <input type="text" id="posicionRecurso" class="input" required >
+                            </div> 
+
+                            <div  class="caja descripcion">
+                                <label for="description">Descripción</label>
+                                <textarea name="descripcion" id="descripcionRecurso" cols="70" rows="10" required></textarea>
+                            </div> 
+
+                            <div class="caja botonAccion">
+                                <div class="accion">
+                                    <input type="button" value="Cancelar" class="boton cancelar" id="cancelar">
+                                </div>
+                                <div class="accion">
+                                    <input type="submit" value="Agregar" class="boton agregar" id="agregarBD">
+                                </div>  
+                            </div> 
+                        </form>  
+                    </div>
+                </div>
+            </div>
+            
+            <section class="tablaBody">
+                <div class="tabla">
+                    <div class="tablaEncabezado">
+                        <p>DETALLES</p>
+                        <div class="buscar">
+                            <select id="buscarPor" class="buscarPor"> <!--lista para seleccionar-->
+                                <!--opciones-->
+                                <option>------</option>
+                                <option>Nombre</option>
+                                <option>Posición</option> 
+                                <option>Serial</option>
+                                <option>Marca</option>
+                                <option>Color</option>
+                                <option>Precio</option>
+                                <option>Estado</option>
+                                <option>Descripción</option>
+                                <option>Acciones</option>
+                            </select>
+                            <input class="inputBuscar" placeholder="Buscar"/>
+                            <button class="botonIcono">
+                                <img src="../imagenes/buscar.png" alt="">
+                            </button>
+                        </div>
+                    </div>
+                </div>    
+
+                <div class="tablaSection">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Posición</th>
+                                    <th>Serial</th>
+                                    <th>Marca</th>
+                                    <th>Color</th>
+                                    <th>Precio</th>
+                                    <th>Estado</th>
+                                    <th>Descripción</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tbodyRecursos"> <!--id para rellenar la tabla-->
+                               
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="paginacion">
+                    <button class="botonIcono">
+                        <img src="../imagenes/siguiente.png" alt="">
+                    </button>
+                    <button class="botonIcono">
+                        <img src="../imagenes/anterior.png" alt="">
+                    </button>
+                </div>
+            </section>
+
+            <div class="form-container" id="eliminarVentana">
+                <div class="eliminarVentana">
+                    <p> ¿Deseas eliminar este instituto? </p>
+                    <div class="formEliminar">
+                        <input type="button" value="No" class="boton eliminar" id="eliminarNo">
+                        <input type="button" value="Si" class="boton eliminar" id="eliminarSi">
+                    </div>   
+                </div>
+            </div>
+
+            <div class="form-editar" id="form_editar"> 
+                <div class="formularioVentana"> 
+                    <div class="tituloFormulario">
+                        <h1> Editar recurso </h1>
+                    </div>
+
+                    <form class="formulario">
+                        <div  class="caja nombre">
+                            <label for="nombre">Nombre del recurso</label>
+                            <input type="text" id="nombreRecurso" class="input" required>
+                        </div>
+
+                        <div  class="caja color">
+                            <label for="color">Color</label>
+                            <input type="text" id="colorRecurso" class="input" required>
+                        </div>  
+                        
+                        <div  class="caja marca">
+                            <label for="marca">Marca</label>
+                            <input type="text" id="marcaRecurso" class="input" required>
+                        </div> 
+
+                        <div  class="caja estado">
+                            <legend>Estado</legend>
+                            <select id="estadoRecurso" required> <!--lista para seleccionar-->
+                                <!--opciones-->
+                                <option>------</option>
+                                <option>Nuevo</option>
+                                <option>Bueno</option> 
+                                <option>Regular</option>
+                                <option>Malo</option>
+                                <option>Cambio urgente</option>
+                            </select> 
+                        </div> 
+
+                        <div  class="caja precio">
+                            <label for="precio">Precio</label>
+                            <input type="number" id="precioRecurso" class="input" required >
+                        </div> 
+
+                        <div  class="caja serial">
+                            <label for="serial">Numero serial</label>
+                            <input type="number" id="serialRecurso" class="input" required>
+                        </div> 
+
+                        <div  class="caja posicion">
+                            <label for="posicion">Posición</label>
+                            <input type="text" id="posicionRecurso" class="input" required >
+                        </div> 
+
+                        <div  class="caja descripcion">
+                            <label for="description">Descripción</label>
+                            <textarea name="descripcion" id="descripcionRecurso" cols="70" rows="10" required></textarea>
+                        </div> 
+
+                        <div class="caja botonAccion">
+                            <div class="accion">
+                                <input type="button" value="Cancelar" class="boton cancelar" id="cancelarEditar">
+                            </div>
+                            <div class="accion">
+                                <input type="submit" value="Aceptar" class="boton agregar" id="editarBD">
+                            </div>  
+                        </div> 
+                    </form>  
+                </div>
+            </div>
+
+        </main>
+        
+        <footer> <!--Etiqueta de pie de página-->
+            <p class="Copyright"> &copy Copyright  2024 </p>
+            <p class="Copyright"> DERECHOS RESERVADOS </p>
+            <p class="Copyright"> LOS PANZONES :D</p>
+
+        </footer>
+
+        <script src="recurso_app.js"></script>
+    </body>
+</html>

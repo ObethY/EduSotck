@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Usuarios</title> <!--nombre del instituto y edificio-->
+        
+        <link rel="stylesheet" href="/resourses/css/reset.css">
+        <link rel="stylesheet" href="/resourses/css/style-pagina.css">
+        
+
+        <link rel="preconnect" href="https://fonts.googleapis.com"> <!--tipo de letra-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <div class="navegacion">
+                <h1> <img src=""></h1> <!--logo-->
+                <nav> <!--panel de navegación-->
+                    <ul> <!--lista horizontal, para la navegación-->
+                        <%if(cookie.rol == "Administrador") {%>
+                            <li><a href="/usuario">Usuarios</a></li>
+                            <li><a href="/movimiento">Movimientos</a></li>
+                        <% } %>
+                        <li><a href="/instituto">Institutos</a></li> <!-- <a> hace referencia que hay un vinculo-->
+                        <li><a href="/salir">Salir</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            
+            <div> <!--titulo, subtitulo y formulario-->
+
+                <section class="tablaBody">
+                    <div class="tabla">
+                        <div class="tablaEncabezado">
+                            <div>
+                                <h1 class="subtitulos">Usuarios</h1>
+                                <button class="botonIcono" onclick="add()">
+                                    <img src="/resourses/image/agregar.png" alt="Agregar edificio">
+                            </button>
+                            </div>
+                            <!--
+                            <div class="buscar">
+                                <select id="buscarPor" class="buscarPor"> <!--lista para seleccionar-->
+                                    <!--opciones-->
+                                    <!--
+                                    <option selected >Nombre</option>
+                                    <option>nombre</option> 
+                                    <option>apellido</option>
+                                    <option>rol</option>
+                                    <option>Color</option>
+                                    <option>matricula</option>
+                                    <option>corrreo</option>
+                                </select>
+                                <input class="inputBuscar" placeholder="Buscar"/>
+                                <button class="botonIcono">
+                                    <img src="/resourses/image/buscar.png" alt="">
+                                </button>
+                            </div>-->
+                        </div>
+                    </div>    
+                    <% if(results.length > 0) { %>
+                        <div class="tablaSection">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Rol</th>
+                                        <th>Matricula</th>                                     
+                                        <th>Correo</th>                                        
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead> 
+                        <% results.forEach(usuario => { %>
+                            
+                            <tbody id="tbodyRecursos"> <!--id para rellenar la tabla-->
+                                            <td><%= usuario.nombre %></td>
+                                            <td><%= usuario.apellido %></td>
+                                            <td><%= usuario.rol %></td>
+                                            <td><%= usuario.matricula %></td>
+                                            <td><%= usuario.correo %></td>
+                                            <td >
+                                                <div class="contenedorAcciones">
+                                                    <button class="botonIcono icono" id="editarIcono" onclick="edit('<%=usuario.id_usuario %>',
+                                                        '<%=usuario.nombre %>','<%=usuario.apellido %>','<%=usuario.rol %>',
+                                                        '<%=usuario.contrasenia %>','<%=usuario.matricula %>','<%=usuario.correo %>',
+                                                    )">
+                                                        <img src="/resourses/image/editar.png">
+                                                    </button>
+                                                    <button class="botonIcono icono" id="borrarIcono">    
+                                                        <img src="/resourses/image/borrar.png" onclick="confirm('<%=usuario.id_usuario %>','<%=usuario.nombre%>')">
+                                                    </button>
+                                                </div>
+                                            </td>
+                             </tbody>
+                        <%  }); %>
+                                
+                            </table>
+                        </div>
+                        <% } else { %>
+                            <div >
+                                <h2 class="subtitulos">Antes debe de crear Usuarios</h2>
+                            </div>
+                        <% } %>
+                    </div>
+                </section>
+
+                <!--MOSTRAR LOS EDIFICIOS DISPONIBLES-->
+        </main>
+        
+        <footer> <!--Etiqueta de pie de página-->
+            <p class="Copyright"> &copy Copyright  2024 </p>
+            <p class="Copyright"> DERECHOS RESERVADOS </p>
+            <p class="Copyright"> LOS PANZONES :D</p>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js"></script>
+        <script src="/resourses/scripts/usuario_app.js"></script>
+    </body>
+</html>

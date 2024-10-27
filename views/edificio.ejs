@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Edificios</title> <!--nombre del instituto y edificio-->
+        
+        <link rel="stylesheet" href="/resourses/css/reset.css">
+        <link rel="stylesheet" href="/resourses/css/style-pagina.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com"> <!--tipo de letra-->
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <div class="navegacion">
+                <h1> <img src=""></h1> <!--logo-->
+                <nav> <!--panel de navegación-->
+                    <ul> <!--lista horizontal, para la navegación-->
+
+                        <%if(cookie.rol == "Administrador") {%>
+                            <li><a href="/usuario">Usuarios</a></li>
+                            <li><a href="/movimiento">Movimientos</a></li>
+                        <% } %>
+                        <li><a href="/instituto">Institutos</a></li> <!-- <a> hace referencia que hay un vinculo-->
+                        <li><a href="/salir">Salir</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="titulos">
+                <button class="botonIcono atras" id="atras"> 
+                    <a href="/instituto">
+                        <img src="/resourses/image/flecha-hacia-atras.png" alt="Atras">
+                    </a>    
+               </button>
+                <h1> <%= cookie.nombreInstituto %></h1> <!--poner el nombre del instituto-->
+            </div>
+            
+            <div> <!--titulo, subtitulo y formulario-->
+
+                <div class="tablaEncabezado">
+                    <div >
+                        <h1 class="subtitulos"> EDIFICIOS </h1>
+                        <% if(cookie.rol != "Lector"){ %>
+                        <button class="botonIcono" onclick="add()">
+                            <img src="/resourses/image/agregar.png" alt="Agregar edificio">
+                        </button>
+                        <% } %>
+                    </div>
+                    
+                    <!--
+                    <div class="buscar">
+                        <select id="buscarPor" class="buscarPor">lista para seleccionar-->
+                            <!--<option>Nombre</option>
+                        </select>
+                        <input class="inputBuscar" placeholder="Buscar"/>
+                        <button class="botonIcono">
+                            <img src="/resourses/image/buscar.png" alt="">
+                        </button>
+                    </div>-->
+                </div>
+
+                <!--MOSTRAR LOS EDIFICIOS DISPONIBLES-->
+                
+                <% if(results.length > 0) { %>
+                <% results.forEach(edificio => { %>
+                <div class="listaElemento">
+                    <h2><%= edificio.nombreEdificio %></h2>
+                    <a href="/salon/cookies/<%= edificio.id_edificio %>/<%= edificio.nombreEdificio %>">
+                        <img src="/resourses/image/edificio.png">
+                    </a>
+                    <h3>Numero de plantas</h3>
+                    <p class="description"><%= edificio.noPlantas %></p>
+
+                    <% if(cookie.rol != "Lector"){ %>
+                    <div class="accionLista">
+                        <button class="botonIcono icono"  onclick="edit('<%=edificio.id_edificio%>','<%= edificio.nombreEdificio%>','<%= edificio.noPlantas %>')" >
+                            <img src="/resourses/image/editar.png"  alt="Boton para editar el contenido de la tabla">
+                        </button>
+                        <button class="botonIcono icono" onclick="confirm('<%=edificio.id_edificio%>','<%= edificio.nombreEdificio%>')">    
+                            <img src="/resourses/image/borrar.png" alt="Boton para borrar el contenido de la tabla">
+                        </button>
+                    </div>
+                    <% } %>
+                </div>
+                <%  }); %>
+                <% } else { %>
+                    <div >
+                        <h2 class="subtitulos">Antes debe de crear edificios</h2>
+                    </div>
+                <% } %>
+        </main>
+        
+        <footer> <!--Etiqueta de pie de página-->
+            <p class="Copyright"> &copy Copyright  2024 </p>
+            <p class="Copyright"> DERECHOS RESERVADOS </p>
+            <p class="Copyright"> LOS PANZONES :D</p>
+
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js"></script>
+        <script src="/resourses/scripts/edificio_app.js"></script>
+
+        <% if(typeof alert != "undefined" ){ %>
+            <script>
+                Swal.fire({
+                    title: '<%= alertTittle %>',
+                    text: '<%= alertMessage %>',
+                    icon: '<%= alertIcon %>',
+                    showConfirmButton: <%= showConfirmButton %> ,
+                    timer: '<%= timer %>'
+        
+                }).then(()=>{
+                    window.location = '/<%= ruta %>'
+                })
+            </script>
+            <% } %>
+
+
+    </body>
+</html>
